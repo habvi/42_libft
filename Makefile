@@ -25,17 +25,15 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -c $(CFLAGS) $(SRCS)
 	$(AR) $(NAME) $(OBJS)
 
 bonus: all
 
 clean:
-	$(RM) -f $(OBJS)
-	$(RM) -f $(OBJS_BONUS)
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	$(RM) -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
