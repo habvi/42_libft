@@ -2,10 +2,9 @@
 
 static size_t	count_words(char const *lp, char c)
 {
-	char const	*rp;
+	char const	*rp = lp;
 	size_t		words;
 
-	rp = lp;
 	words = 0;
 	while (*rp != '\0')
 	{
@@ -25,23 +24,11 @@ static size_t	count_words(char const *lp, char c)
 	return (words);
 }
 
-static char	*ft_strndup(char const *src, size_t size)
-{
-	char	*dst;
-
-	dst = (char *)malloc(sizeof(char) * (size + 1));
-	if (dst == NULL)
-		return (NULL);
-	ft_strlcpy(dst, src, size + 1);
-	return (dst);
-}
-
 static unsigned int	set_split_str(char const *lp, char c, char **list)
 {
-	char const	*rp;
+	char const	*rp = lp;
 	size_t		i;
 
-	rp = lp;
 	i = 0;
 	while (*rp != '\0')
 	{
@@ -54,7 +41,7 @@ static unsigned int	set_split_str(char const *lp, char c, char **list)
 			rp++;
 		if (lp != rp)
 		{
-			list[i] = ft_strndup(lp, rp - lp);
+			list[i] = ft_substr(lp, 0, rp - lp);
 			if (list[i] == NULL)
 				return (0);
 			i++;
@@ -96,29 +83,3 @@ char	**ft_split(char const *s, char c)
 	free_all(list);
 	return (NULL);
 }
-
-// #include <stdio.h>
-
-// void put_s(char **s)
-// {
-// 	while (*s)
-// 	{
-// 		printf("%s\n", *s);
-// 		s++;
-// 	}
-// 	printf("-----\n");
-// }
-
-// int main(void)
-// {
-// 	put_s(ft_split("///aaa////aa//", '/'));
-// 	put_s(ft_split("///bbb////bb", '/'));
-
-// 	put_s(ft_split("cc////c//cccc", '/'));
-// 	put_s(ft_split("ddd////d//", '/'));
-// 	put_s(ft_split("ee//e//eee", '/'));
-// 	put_s(ft_split("fff", '/'));
-// 	put_s(ft_split("gg", '\0'));
-
-// 	return (0);
-// }
