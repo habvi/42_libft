@@ -22,19 +22,3 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putnbr_fd(num / 10, fd);
 	ft_putnbr_fd(num % 10, fd);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	ft_putnbr_fd(INT_MAX, 1);
-// 	printf("\n");
-// 	ft_putnbr_fd(INT_MIN, 1);
-// 	printf("\n");
-// 	ft_putnbr_fd(0, 1);
-// 	printf("\n");
-// 	ft_putnbr_fd(37393, 1);
-// 	printf("\n");
-// 	ft_putnbr_fd(-5567, 1);
-// 	printf("\n");
-// }
