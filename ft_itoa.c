@@ -7,7 +7,7 @@ static size_t	count_length(long num, size_t now)
 	return (count_length(num / 10, now + 1));
 }
 
-static char	*set_to_list(long num, size_t len, int is_minus)
+static char	*set_to_list(long num, size_t len, bool is_minus)
 {
 	char	*res;
 	size_t	i;
@@ -32,13 +32,13 @@ char	*ft_itoa(int n)
 {
 	size_t	num;
 	size_t	len;
-	int		is_minus;
+	bool	is_minus;
 
-	is_minus = 0;
+	is_minus = false;
 	len = 0;
 	if (n < 0)
 	{
-		is_minus = 1;
+		is_minus = true;
 		len++;
 		if (n == INT_MIN)
 			num = (size_t)(-(n + 1)) + 1;

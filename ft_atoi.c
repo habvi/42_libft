@@ -1,17 +1,17 @@
 #include "libft.h"
 
-static unsigned int	is_space(int c)
+static bool	is_space(int c)
 {
 	return (c == '\t' || c == '\n' || c == '\v' || \
 			c == '\f' || c == '\r' || c == ' ');
 }
 
-static unsigned int	is_operator(int c)
+static bool	is_operator(int c)
 {
 	return (c == '-' || c == '+');
 }
 
-static unsigned int	is_overflow(size_t num, int c, int op)
+static bool	is_overflow(size_t num, int c, int op)
 {
 	size_t	ov_div;
 	size_t	ov_mod;
@@ -19,10 +19,10 @@ static unsigned int	is_overflow(size_t num, int c, int op)
 	ov_div = LONG_MAX / 10;
 	ov_mod = LONG_MAX % 10 + (op == -1);
 	if (num > ov_div)
-		return (1);
+		return (true);
 	if (num == ov_div && (size_t)c - '0' > ov_mod)
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
 int	ft_atoi(const char *str)
@@ -36,7 +36,7 @@ int	ft_atoi(const char *str)
 		str++;
 	if (is_operator(*str))
 	{
-		op -= 2 * (*str == '-');
+		op = ',' - *str;
 		str++;
 	}
 	while (ft_isdigit(*str))

@@ -24,7 +24,7 @@ static size_t	count_words(char const *lp, char c)
 	return (words);
 }
 
-static unsigned int	set_split_str(char const *lp, char c, char **list)
+static bool	set_split_str(char const *lp, char c, char **list)
 {
 	char const	*rp = lp;
 	size_t		i;
@@ -43,12 +43,12 @@ static unsigned int	set_split_str(char const *lp, char c, char **list)
 		{
 			list[i] = ft_substr(lp, 0, rp - lp);
 			if (list[i] == NULL)
-				return (0);
+				return (false);
 			i++;
 			lp = rp;
 		}
 	}
-	return (1);
+	return (true);
 }
 
 static void	free_all(char **list)
