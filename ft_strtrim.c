@@ -1,6 +1,7 @@
 #include "libft.h"
 
-static char const	*search_set(char const *s, char const *set, const int direction)
+static char const	*search_set(\
+					char const *s, char const *set, const int direction)
 {
 	while (*s && ft_strchr(set, *s))
 		s += direction;
